@@ -44,3 +44,15 @@ The `server.js` file uses the `vhost` module to create a new express app for eac
 6. You should see the message "hello from domain 2"
 
 
+## steps to make nginx
+
+```bash
+sudo apt update
+sudo apt install nginx -y
+sudo apt install certbot python3-certbot-nginx -y
+sudo certbot --nginx
+sudo certbot renew --dry-run
+
+
+```
+

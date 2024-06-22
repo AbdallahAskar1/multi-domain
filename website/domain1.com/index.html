@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domain 1</title>
-</head> 
-<body>
-    <h1>hello from domain 1</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="title"></title>
+  </head>
+  <body>
+    <h1 id="title-heading"></h1>
+    <p id="body-content"></p>
+
+    <section id="services">
+      <h2>Our Services</h2>
+      <div id="services-list"></div>
+    </section>
+
+    <script>
+      // Get the title and body content from the data.json file
+      (async () => {
+        const data = await fetch("data.json").then((response) =>
+          response.json()
+        );
+        document.getElementById("title-heading").innerHTML = data.title;
+        document.getElementById("body-content").innerHTML = data.body;
+        console.log(data);
+      })();
+      document.getElementById("title").innerHTML = data.title;
+      document.getElementById("body-content").innerHTML = data.body;
+
+      // Get the services data from the data.json file
+      const servicesData = data.services;
+
+      // Create a list element for each service
+      const servicesList = document.getElementById("services-list");
+      console.log(servicesData);
+
+      servicesData.forEach((service) => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = service;
+        servicesList.appendChild(listItem);
+      });
+    </script>
+  </body>
 </html>
